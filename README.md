@@ -1,4 +1,4 @@
-# POTD-Questions
+# POTD-Question
 ## GFG potd
 
 ## --------------------------------------------------------------------------
@@ -28,8 +28,7 @@ stat foo.txt              # List size, created and modified timestamps for a fil
 stat foo                  # List size, created and modified timestamps for a directory
 tree                      # List directory and file tree
 tree -a                   # List directory and file tree including hidden
-tree -d                   # List directory tree
-cd foo                    # Go to foo sub-directory
+tree -d           cd foo                    # Go to foo sub-directory
 cd                        # Go to home directory
 cd ~                      # Go to home directory
 cd -                      # Go to last directory
@@ -501,41 +500,28 @@ ssh user@hostname -p 8765    # Connect to hostname using the user over a custom 
 ssh ssh://user@hostname:8765 # Connect to hostname using the user over a custom port
 ```
 
-Set default user and port in `~/.ssh/config`, so you can just enter the name next time:
+Set default user and port in `~/.ssh/config`, so you can just ent
+``bash
+sp foo.txt ubuntu@hostname:/home/ubuntu # Copy foo.txt into the specified remote directory
+``
 
-```bash
-$ cat ~/.ssh/config
-Host name
-  User foo
-  Hostname 127.0.0.1
-  Port 8765
-$ ssh name
-```
+## Bsh Profile
 
-## Secure Copy
+- bas - `.bashrc`
+- zsh  `.zshrc`
 
-```bash
-scp foo.txt ubuntu@hostname:/home/ubuntu # Copy foo.txt into the specified remote directory
-```
-
-## Bash Profile
-
-- bash - `.bashrc`
-- zsh - `.zshrc`
-
-```bash
-# Always run ls after cd
+```bash# Always run ls after cd
 function cd {
   builtin cd "$@" && ls
-}
+
 
 # Prompt user before overwriting any files
-alias cp='cp --interactive'
+alias c='cp --interactive'
 alias mv='mv --interactive'
 alias rm='rm --interactive'
 
 # Always show disk usage in a human readable format
-alias df='df -h'
+alias df'df -h'
 alias du='du -h'
 ```
 
@@ -544,7 +530,7 @@ alias du='du -h'
 ### Variables
 
 ```bash
-#!/bin/bash
+#!/bin/ba
 
 foo=123                # Initialize variable foo with 123
 declare -i foo=123     # Initialize an integer foo with 123
@@ -552,20 +538,18 @@ declare -r foo=123     # Initialize readonly variable foo with 123
 echo $foo              # Print variable foo
 echo ${foo}_'bar'      # Print variable foo followed by _bar
 echo ${foo:-'default'} # Print variable foo if it exists otherwise print default
-
 export foo             # Make foo available to child processes
 unset foo              # Make foo unavailable to child processes
 ```
 
 ### Environment Variables
-
 ```bash
 #!/bin/bash
 
 env            # List all environment variables
 echo $PATH     # Print PATH environment variable
 export FOO=Bar # Set an environment variable
-```
+``
 
 ### Functions
 
@@ -574,7 +558,7 @@ export FOO=Bar # Set an environment variable
 
 greet() {
   local world = "World"
-  echo "$1 $world"
+ echo "$1 $world"
   return "$1 $world"
 }
 greet "Hello"
@@ -583,115 +567,34 @@ greeting=$(greet "Hello")
 
 ### Exit Codes
 
-```bash
+``bash
 #!/bin/bash
 
 exit 0   # Exit the script successfully
 exit 1   # Exit the script unsuccessfully
 echo $?  # Print the last exit code
 ```
-
 ### Conditional Statements
 
-#### Boolean Operators
 
-- `$foo` - Is true
-- `!$foo` - Is false
 
-#### Numeric Operators
 
-- `-eq` - Equals
-- `-ne` - Not equals
-- `-gt` - Greater than
-- `-ge` - Greater than or equal to
-- `-lt` - Less than
-- `-le` - Less than or equal to
-- `-e` foo.txt - Check file exists
-- `-z` foo - Check if variable exists
 
-#### String Operators
 
-- `=` - Equals
-- `==` - Equals
-- `-z` - Is null
-- `-n` - Is not null
-- `<` - Is less than in ASCII alphabetical order
-- `>` - Is greater than in ASCII alphabetical order
 
-#### If Statements
 
-```bash
-#!/bin/bash
 
-if [[$foo = 'bar']]; then
-  echo 'one'
-elif [[$foo = 'bar']] || [[$foo = 'baz']]; then
-  echo 'two'
-elif [[$foo = 'ban']] && [[$USER = 'bat']]; then
-  echo 'three'
-else
-  echo 'four'
-fi
-```
 
-#### Inline If Statements
 
-```bash
-#!/bin/bash
 
-[[ $USER = 'rehan' ]] && echo 'yes' || echo 'no'
-```
 
-#### While Loops
 
-```bash
-#!/bin/bash
 
-declare -i counter
-counter=10
-while [$counter -gt 2]; do
-  echo The counter is $counter
-  counter=counter-1
-done
-```
 
-#### For Loops
 
-```bash
-#!/bin/bash
 
-for i in {0..10..2}
-  do
-    echo "Index: $i"
-  done
 
-for filename in file1 file2 file3
-  do
-    echo "Content: " >> $filename
-  done
 
-for filename in *;
-  do
-    echo "Content: " >> $filename
-  done
-```
 
-#### Case Statements
 
-```bash
-#!/bin/bash
-
-echo "What's the weather like tomorrow?"
-read weather
-
-case $weather in
-  sunny | warm ) echo "Nice weather: " $weather
-  ;;
-  cloudy | cool ) echo "Not bad weather: " $weather
-  ;;
-  rainy | cold ) echo "Terrible weather: " $weather
-  ;;
-  * ) echo "Don't understand"
-  ;;
-esac
-```
+changes made to README.
